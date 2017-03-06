@@ -43,10 +43,10 @@ $(function() {
              allFeeds.forEach(function(feed){
                  if (attributeDefined && (typeof feed.url === 'undefined')) {
                      attributeDefined = false;
-                 };
+                 }
                  if (attributeFilled && (!feed.url)){
                     attributeFilled = false;
-                 };
+                 }
              });
              expect(attributeDefined).toBe(true);
              expect(attributeFilled).toBe(true);
@@ -86,7 +86,7 @@ $(function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
          });
 
-         /* TODO: Write a test that ensures the menu changes
+         /* This is a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
@@ -112,9 +112,8 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        it('have loaded with at least one .entry element', function(done){
-            expect($('.feed-list').length).not.toBe(0);
-            done();
+        it('have loaded with at least one .entry element', function(){
+            expect($('.feed > .entry-link > .entry').length).not.toBe(0);
         });
      });
     /* This is a new test suite named "New Feed Selection" */
@@ -138,9 +137,8 @@ $(function() {
             });
         });
 
-        it('is loaded by the loadFeed function that the content actually changes', function(done){
+        it('is loaded by the loadFeed function that the content actually changes', function(){
             expect(firstFeed).not.toEqual(secondFeed);
-            done();
         });
      });
 }());
